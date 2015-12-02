@@ -2,6 +2,12 @@ import shutil
 import os
 import unrar
 import rarfile
+import zipfile
+import sys
+
+print 'Number of arguments:', len(sys.argv), 'arguments.'
+print 'Argument List:', str(sys.argv)
+print 'Argument interesting is: ' , str(sys.argv[1])
 
 if not os.path.exists('../../../tmp_torrents/'):
     os.mkdir('../../../tmp_torrents')
@@ -24,7 +30,6 @@ def initScript():
 	    print 'files found'
 	    print files
 	    new_folder = files[:-4]
-	    #print new_folder
             org_rar(files, new_folder)
         elif files.endswith('.txt'):
             shutil.move(files,'../../txt_files/')
@@ -35,7 +40,15 @@ def initScript():
         elif files.endswith('.torrent'):
             shutil.move(files, '../../../tmp_torrents/')
             print 'moved ' + files + ' into tmp_torrent folder'
-
+        elif files.endswith('.zip'):
+            zfile = zipfile.ZipFile(files)
+            for name in zfile.namelist():
+                (dirname, filename) = os.path.split(name)
+                print "Decompressing " + filename + " on " + dirname
+                if not os.path.exists(dirname):
+                    os.makedirs(dirname)
+                zfile.extract(name, dirname)
+            shutil.copy(files, dirname)
 
 initScript();
 
