@@ -9,17 +9,7 @@ import argparse
 parser = argparse.ArgumentParser(description='This is my help')
 
 args = parser.parse_args()
-'''
-print 'Number of arguments:', len(sys.argv), 'arguments.'
-print 'Argument List:', str(sys.argv)
-print 'Argument interesting is: ' , str(sys.argv[1])
-if str(sys.argv[1]) == 'hello':
-    print 'yes it is hello'
-elif str(sys.argv[1]) == 'goodbye':
-    print 'also yes it says goodbye!'
-else:
-    print 'not a single word'
-'''
+
 if not os.path.exists('../../../tmp_torrents/'):
     os.mkdir('../../../tmp_torrents')
 elif not os.path.exists('../../txt_files/'):
