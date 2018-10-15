@@ -6,7 +6,7 @@ import zipfile
 import sys
 import argparse
 
-parser = argparse.ArgumentParser(description='This is my help')
+parser = argparse.ArgumentParser(description='This is my app helper')
 
 args = parser.parse_args()
 
