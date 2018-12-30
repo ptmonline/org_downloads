@@ -52,6 +52,3 @@ def initScript():
             shutil.copy(files, dirname)
 
 initScript();
-
-
-        
